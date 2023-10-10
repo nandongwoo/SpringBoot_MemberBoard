@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{component/config :: config}"></th:block>
+</head>
+<body>
+<div th:replace="~{component/header :: header}"></div>
+<div class="container mt-5 mb-5">
+    <table class="table table-bordered">
+        <form action="/member/login" method="post">
+            <input name="memberEmail" placeholder="Email" th:type="text"><br>
+            <input name="memberPassword" placeholder="Password" th:type="password"><br>
+            <input type="submit" value="로그인">
+            <a href="/member/save">회원가입</a>
+        </form>
+    </table>
+</div>
+<div th:replace="~{component/footer :: footer}"></div>
+</body>
+</html>

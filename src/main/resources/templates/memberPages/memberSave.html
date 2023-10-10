@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{component/config :: config}"></th:block>
+</head>
+<body>
+<div th:replace="~{component/header :: header}"></div>
+<div th:replace="~{component/nav :: nav}"></div>
+<h1 class="text-center">회원가입 페이지</h1>
+<div class="container mt-5 mb-5">
+    <table class="table table-bordered">
+        <form action="post" method="/member/save">
+            이메일 : <input name="memberEmail" placeholder="Email" type="text"><br>
+            비밀번호 : <input name="memberPassword" placeholder="Password" type="password"><br>
+            이름 : <input name="memberName" placeholder="Name" type="text"><br>
+            번호 : <input name="memberMobile" placeholder="Mobile" type="text"><br>
+            생년월일 : <input name="memberBirth" type="date"><br>
+            프로필사진 : <input name="memberProfile" type="file"><br>
+            <input type="submit" value="회원가입"><br>
+        </form>
+    </table>
+</div>
+
+<div th:replace="~{component/footer :: footer}"></div>
+</body>
+</html>
