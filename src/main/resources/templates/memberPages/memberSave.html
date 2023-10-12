@@ -9,18 +9,42 @@
 <h1 class="text-center">회원가입 페이지</h1>
 <div class="container mt-5 mb-5">
     <table class="table table-bordered">
-        <form action="post" method="/member/save">
-            이메일 : <input name="memberEmail" placeholder="Email" type="text"><br>
+        <form action="/member/save" method="post" enctype="multipart/form-data">
+            이메일 : <input id="memberEmail" name="memberEmail" placeholder="Email" type="text" onkeyup="emailCheck_fn()"><br>
+                    <p id="emailCheck"></p>
             비밀번호 : <input name="memberPassword" placeholder="Password" type="password"><br>
             이름 : <input name="memberName" placeholder="Name" type="text"><br>
             번호 : <input name="memberMobile" placeholder="Mobile" type="text"><br>
             생년월일 : <input name="memberBirth" type="date"><br>
             프로필사진 : <input name="memberProfile" type="file"><br>
-            <input type="submit" value="회원가입"><br>
+            <input id="saveSubmit" type="submit" value="회원가입"><br>
         </form>
     </table>
 </div>
 
 <div th:replace="~{component/footer :: footer}"></div>
 </body>
+<script th:inline="javascript">
+    const emailCheck_fn = () => {
+        const email = document.getElementById("memberEmail").value;
+        const emailCheck = document.getElementById("emailCheck");
+        axios({
+            method : "post",
+            url : "/member/findByEmail/",
+            data : {
+              memberEmail : email
+            }
+        }).then(res => {
+            console.log(res);
+            emailCheck.innerHTML = "사용가능한 이메일입니다";
+            emailCheck.style.color = "green";
+
+        }).catch(err => {
+            console.log(err);
+            emailCheck.innerHTML = "사용 중인 이메일입니다"
+            emailCheck.style.color = "red";
+        })
+    }
+
+</script>
 </html>

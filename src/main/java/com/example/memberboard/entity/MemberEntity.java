@@ -27,22 +27,23 @@ public class MemberEntity extends BaseEntity{
     @Column(length = 10, nullable = false)
     private String memberName;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 20, nullable = false)
     private String memberMobile;
 
-    @Column(length = 15, nullable = false)
+    @Column(length = 20, nullable = false)
     private String memberBirth;
 
-    @Column(length = 255, nullable = true)
+    @Column
     private String originalFileName;
 
-    @Column(length = 255, nullable = true)
+    @Column
     private String storedFileName;
 
     public static MemberEntity toMemberEntity(MemberDTO memberDTO){
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setMemberName(memberDTO.getMemberName());
         memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+        memberEntity.setMemberMobile(memberDTO.getMemberMobile());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
         memberEntity.setMemberBirth(memberDTO.getMemberBirth());
         return memberEntity;
@@ -54,6 +55,7 @@ public class MemberEntity extends BaseEntity{
         memberEntity.setMemberEmail(memberDTO.getMemberEmail());
         memberEntity.setMemberPassword(memberDTO.getMemberPassword());
         memberEntity.setMemberBirth(memberDTO.getMemberBirth());
+        memberEntity.setMemberMobile(memberDTO.getMemberMobile());
         memberEntity.setOriginalFileName(memberDTO.getOriginalFileName());
         memberEntity.setStoredFileName(memberDTO.getStoredFileName());
         return memberEntity;
